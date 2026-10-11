@@ -1,0 +1,597 @@
+import { WorldDefinition, LiteraryItem, DailyFeelingOption } from '../types';
+
+export const WORLDS: WorldDefinition[] = [
+  {
+    id: 'love',
+    nameNepali: 'प्रेम संसार',
+    nameEnglish: 'Love',
+    subtitle: 'गुलाबी सुगन्ध, धड्कन र समर्पणको स्पर्श',
+    signatureQuote: 'केही भावना शब्दमा होइन, तिम्रो मौनतामा बग्छन्।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-rose-950 via-pink-950 to-neutral-950',
+    accentColor: '#f43f5e',
+    ambientDescription: 'मखमली धड्कन र हावामा उड्ने गुलाफी पातहरू',
+    coreShape: 'heart',
+    tags: ['रोमान्टिक', 'माया', 'प्रेमपत्र', 'पिकअप लाइन्स', 'धड्कन'],
+  },
+  {
+    id: 'sad',
+    nameNepali: 'उदासी र मौनता',
+    nameEnglish: 'Sad',
+    subtitle: 'झमझम वर्षा, अधुरोपन र चिसो रातको सन्नाटा',
+    signatureQuote: 'आँखाबाट झरेका आँसु त पुछ्न सकिएला, तर मन रोएको कसले देख्छ र?',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-slate-950 via-sky-950 to-neutral-950',
+    accentColor: '#38bdf8',
+    ambientDescription: 'शीतल पानीका थोपाहरू र रातको चकमन्न मौनता',
+    coreShape: 'moon',
+    tags: ['आँसु', 'वियोग', 'चोट', 'गजल', 'सम्झना'],
+  },
+  {
+    id: 'breakup',
+    nameNepali: 'टुटेको मन र मुक्ति',
+    nameEnglish: 'Breakup',
+    subtitle: 'फुटेका सिसाका टुक्रा, छुटेका हात र आत्मसम्मान',
+    signatureQuote: 'जुन सम्बन्धमा आफ्नो आत्मसम्मान गुम्छ, त्यहाँबाट मौन भएर निस्कनु नै उचित हुन्छ।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-zinc-950 via-purple-950 to-stone-950',
+    accentColor: '#c084fc',
+    ambientDescription: 'काँचका कणहरू विस्तारै प्रकाशमा विलीन हुँदै',
+    coreShape: 'crystal',
+    tags: ['छोडिएका बाचा', 'अधुरो प्रेम', 'हिलिङ', 'मुक्ति', 'नयाँ यात्रा'],
+  },
+  {
+    id: 'life',
+    nameNepali: 'जिन्दगीको यथार्थ',
+    nameEnglish: 'Life',
+    subtitle: 'समयको चक्र, नियति, कर्म र अनन्त आकाश',
+    signatureQuote: 'जिन्दगी एउटा यस्तो किताब हो, जहाँ हरेक पानाले नयाँ पाठ सिकाउँछ।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-indigo-950 via-slate-950 to-neutral-950',
+    accentColor: '#818cf8',
+    ambientDescription: 'ताराहरूको सुस्त गति र क्षितिजमा उदाउँदो सत्य',
+    coreShape: 'cosmos',
+    tags: ['सत्य', 'समय', 'कर्म', 'दर्शन', 'पाठ'],
+  },
+  {
+    id: 'motivation',
+    nameNepali: 'सङ्घर्ष र आशा',
+    nameEnglish: 'Motivation',
+    subtitle: 'अँध्यारो चिरेर उदाउने सूर्य र जितको अठोट',
+    signatureQuote: 'जबसम्म तिमी हार मान्दैनौ, तबसम्म संसारको कुनै तागतले तिमीलाई हराउन सक्दैन।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-amber-950 via-orange-950 to-neutral-950',
+    accentColor: '#f59e0b',
+    ambientDescription: 'पहाडको टाकुराबाट उदाउँदो सुनौलो किरण',
+    coreShape: 'sun',
+    tags: ['सपना', 'साहस', 'सङ्घर्ष', 'मेहेनत', 'उत्साह'],
+  },
+  {
+    id: 'loneliness',
+    nameNepali: 'एक्लोपनको गहिराइ',
+    nameEnglish: 'Loneliness',
+    subtitle: 'भीडबाट टाढा, आफैंसँगको निःशब्द संवाद',
+    signatureQuote: 'एक्लो हुनुको आफ्नै सौन्दर्य छ, यहाँ अरू कसैको मुखुण्डो ओढ्नु पर्दैन।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-blue-950 via-zinc-950 to-neutral-950',
+    accentColor: '#60a5fa',
+    ambientDescription: 'टाढाको चिसो तारा र शान्त शून्य',
+    coreShape: 'lone-orb',
+    tags: ['एक्लोपन', 'शान्ति', 'अन्वेषण', 'अविचलित'],
+  },
+  {
+    id: 'friendship',
+    nameNepali: 'मित्रताको न्यानोपन',
+    nameEnglish: 'Friendship',
+    subtitle: 'हाँसोका पल, बिनासर्त साथ र हृदयको बन्धन',
+    signatureQuote: 'सयौँ मानिससँग हिँड्नु ठूलो कुरा होइन, तर कोही नहुँदा पनि तिमीसँग उभिने एउटा साथी हुनु नै जीवनको धन हो।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-emerald-950 via-teal-950 to-neutral-950',
+    accentColor: '#34d399',
+    ambientDescription: 'सँगै नाच्ने न्यानो पहेँलो र हरियो आभा',
+    coreShape: 'dual-flame',
+    tags: ['साथी', 'यारी', 'न्यानो', 'सधैँभरि'],
+  },
+  {
+    id: 'dreams',
+    nameNepali: 'सपना र कल्पना',
+    nameEnglish: 'Dreams',
+    subtitle: 'ताराहरू बीच तैरिने रहर र असीमित उडान',
+    signatureQuote: 'सपना ती होइनन् जुन निदाउँदा देखिन्छन्, सपना ती हुन् जसले निदाउनै दिँदैनन्।',
+    signatureAuthor: 'मनका शब्द',
+    gradient: 'from-violet-950 via-fuchsia-950 to-neutral-950',
+    accentColor: '#e879f9',
+    ambientDescription: 'अन्तरिक्षमा घुमिरहेको जादुई नेबुला',
+    coreShape: 'nebula',
+    tags: ['कल्पना', 'उडान', 'तारा', 'असीमित'],
+  },
+];
+
+export const DAILY_FEELING_OPTIONS: DailyFeelingOption[] = [
+  {
+    id: 'in-love',
+    nepaliTitle: 'प्रेममा छु',
+    englishTitle: 'In Love',
+    description: 'हृदयमा गुलाफी भावना र कसैको अनुहार छ',
+    targetWorld: 'love',
+    recommendedQuoteId: 'love-1',
+  },
+  {
+    id: 'sad-heart',
+    nepaliTitle: 'आज मन उदास छ',
+    englishTitle: 'Feeling Sad',
+    description: 'सन्नाटाले घेरेको छ, आँखा रसाएका छन्',
+    targetWorld: 'sad',
+    recommendedQuoteId: 'sad-1',
+  },
+  {
+    id: 'missing-someone',
+    nepaliTitle: 'कसैको याद आइरहेको छ',
+    englishTitle: 'Missing Someone',
+    description: 'हरेक हावाको झोक्काले उहाँकै याद ल्याउँछ',
+    targetWorld: 'sad',
+    recommendedQuoteId: 'sad-3',
+  },
+  {
+    id: 'seeking-life',
+    nepaliTitle: 'जिन्दगी बुझ्दै छु',
+    englishTitle: 'Reflecting on Life',
+    description: 'समयको प्रवाह र आफ्ना बाटाहरू नियाल्दै छु',
+    targetWorld: 'life',
+    recommendedQuoteId: 'life-1',
+  },
+  {
+    id: 'new-beginning',
+    nepaliTitle: 'नयाँ सुरुवात गर्न चाहन्छु',
+    englishTitle: 'A Fresh Start',
+    description: 'विगतलाई बिर्सेर आफूलाई जोड्ने अठोट',
+    targetWorld: 'breakup',
+    recommendedQuoteId: 'breakup-4',
+  },
+  {
+    id: 'motivated',
+    nepaliTitle: 'आज ऊर्जावान र खुसी छु',
+    englishTitle: 'Driven & Inspired',
+    description: 'आफ्ना सपना पूरा गर्ने आँटले भरिएको छु',
+    targetWorld: 'motivation',
+    recommendedQuoteId: 'motivation-1',
+  },
+  {
+    id: 'speechless',
+    nepaliTitle: 'केही भन्न मन छ, तर शब्द छैनन्',
+    englishTitle: 'Silent Depth',
+    description: 'भावनाहरू अथाह छन्, मौनता नै भाषा बनेको छ',
+    targetWorld: 'loneliness',
+    recommendedQuoteId: 'lonely-1',
+  },
+];
+
+export const NEPALI_LITERATURE: LiteraryItem[] = [
+  // --- LOVE WORLD ---
+  {
+    id: 'love-1',
+    title: 'आँखाको भाषा',
+    text: `तिमी हाँस्दा यो संसार सुन्दर लाग्छ,
+नबोले पनि तिम्रा आँखाहरूले सबै भन्छन्।
+हरेक धड्कनमा तिम्रै नाम गुञ्जिन्छ,
+लाग्छ यो जुनी तिमीमै समर्पित छ।`,
+    romanizedText: 'Timi hasda yo sansar sundar lagcha, Nabole pani timra aakhaharu le sabai bhanchhan...',
+    englishMeaning: 'When you smile, the world turns poetic; even in silence, your eyes whisper everything.',
+    author: 'मनका शब्द',
+    world: 'love',
+    category: 'shayari',
+    subCategory: 'Romantic Shayari',
+    tags: ['प्रेम', 'आँखा', 'मुटु', 'रोमान्टिक'],
+    featured: true,
+  },
+  {
+    id: 'love-2',
+    title: 'सपनाको स्पर्श',
+    text: `हजारौँ मानिसको भीडमा पनि
+मेरो नजरले सधैँ तिमीलाई नै खोज्छ।
+प्रेम कुनै सम्झौता होइन प्रिय,
+यो त दुई आत्माको मौन मिलन हो।`,
+    author: 'अनामिका',
+    world: 'love',
+    category: 'poem',
+    subCategory: 'True Love',
+    tags: ['भीड', 'आत्मा', 'साँचो माया'],
+  },
+  {
+    id: 'love-3',
+    title: 'नेपाली रोमान्टिक पिकअप लाइन',
+    text: `सुन्नुस् न!
+के तपाईंको नाम गुराँस हो?
+किनकि तपाईंलाई देख्नासाथ मेरो उजाड डाँडा पनि ढकमक्क फुलेझैँ लाग्छ।`,
+    author: 'काठमाडौँका शब्द',
+    world: 'love',
+    category: 'pickup',
+    subCategory: 'Romantic Pickup Lines',
+    tags: ['पिकअप', 'गुराँस', 'हँसिलो', 'रोमान्टिक'],
+  },
+  {
+    id: 'love-4',
+    title: 'गजलको अंश : तिम्रै प्रतीक्षामा',
+    text: `गुलाफको सुगन्धभन्दा मिठो तिम्रो बोली लाग्छ,
+तिमी नहुँदा यो मुटु किन यति धेरै पोल्छ?
+आऊ न नजिक, मेटाऊ यो मनको तिर्खा,
+हरेक रात जून हेरेर तिम्रै बाटो खुल्छ।`,
+    author: 'मोतीराम भट्ट शैली',
+    world: 'love',
+    category: 'ghazal',
+    subCategory: 'Love Ghazal',
+    tags: ['गजल', 'जुनेली', 'प्रतीक्षा'],
+    featured: true,
+  },
+  {
+    id: 'love-5',
+    title: 'चिट्ठीको पानाबाट',
+    text: `प्रिय,
+तिमी सँगै हुँदा समय कसरी उड्छ पत्तै हुँदैन,
+तर तिमी टाढा हुँदा एक पल पनि एक युग बनिदिन्छ।
+तिमी मेरो जीवनको त्यो पाना हौ,
+जसलाई म बारम्बार पढेर पनि कहिल्यै अघाउँदिनँ।`,
+    author: 'गुलाबी सम्झना',
+    world: 'love',
+    category: 'letter',
+    subCategory: 'Love Letters',
+    tags: ['प्रेमपत्र', 'सम्झना', 'प्रिय'],
+  },
+  {
+    id: 'love-6',
+    title: 'पिकअप लाइन : चिया र तिमी',
+    text: `मलाई बिहानीको तातो चिया भन्दा पनि
+तिम्रो त्यो पहिलो मुस्कानले बढी न्यानो दिन्छ!`,
+    author: 'मनका शब्द',
+    world: 'love',
+    category: 'pickup',
+    subCategory: 'Crush Lines',
+    tags: ['चिया', 'मुस्कान', 'क्रस'],
+  },
+
+  // --- SAD WORLD ---
+  {
+    id: 'sad-1',
+    title: 'मौन आँसु',
+    text: `सबैले सोध्छन् किन यति शान्त छौ भनेर,
+उनीहरूलाई के थाहा मनभित्र कत्रो आँधी चलेको छ!
+मुस्कुराहट त ओठको एउटा पर्दा मात्र हो,
+वास्तविक पीडा त सिरानी भिजाउने रातलाई थाहा हुन्छ।`,
+    author: 'मनका शब्द',
+    world: 'sad',
+    category: 'shayari',
+    subCategory: 'Sad Shayari',
+    tags: ['आँसु', 'पर्दा', 'सिरानी', 'उदासी'],
+    featured: true,
+  },
+  {
+    id: 'sad-2',
+    title: 'छोडेर गएका दिनहरू',
+    text: `कहिलेकाहीँ आफ्नै छाया पनि पराई लाग्छ,
+जब मनले चाहेको मान्छे नै टाढा भइदिन्छ।
+गुनासो कसैसँग छैन यहाँ,
+सायद मेरै भाग्यमा अधुरो लेखिएको थियो।`,
+    author: 'विवेक',
+    world: 'sad',
+    category: 'poem',
+    subCategory: 'Emotional Pain',
+    tags: ['भाग्य', 'अधुरो', 'छाया'],
+  },
+  {
+    id: 'sad-3',
+    title: 'गजल : रातको रोदन',
+    text: `बरसातको झरीमा आफ्ना आँसु लुकाएँ,
+उनको खुसीका लागि आफ्नै सपना सुकाएँ।
+नसोध मलाई त्यो वियोगको कथा साथी,
+मैले आफैंलाई बेचेर पनि उनलाई सजाएँ।`,
+    author: 'निराश कवि',
+    world: 'sad',
+    category: 'ghazal',
+    subCategory: 'Sad Ghazals',
+    tags: ['गजल', 'झरी', 'वियोग', 'त्याग'],
+  },
+  {
+    id: 'sad-4',
+    title: 'एकतर्फी प्रेम',
+    text: `संसारको सबैभन्दा भारी बोझ के हो थाहा छ?
+कसैलाई अगाध माया गर्नु,
+र उसले कहिल्यै त्यो महसुस नगर्नु।
+म सधैँ तिम्रो पर्खाइमा रहेँ,
+तिमी कसै अरूकै खोजिमा हिँड्यौ।`,
+    author: 'मनका शब्द',
+    world: 'sad',
+    category: 'quote',
+    subCategory: 'One-Sided Love',
+    tags: ['एकतर्फी', 'बोझ', 'पर्खाइ'],
+  },
+  {
+    id: 'sad-5',
+    title: 'टुटेको विश्वास',
+    text: `विश्वास सिसा जस्तै हुँदो रहेछ,
+एकपटक फुटेपछि जतिसुकै जोडे पनि
+त्यसमा दरार सधैँभरि देखिइरहन्छ।`,
+    author: 'मनका शब्द',
+    world: 'sad',
+    category: 'quote',
+    subCategory: 'Heart-Touching Lines',
+    tags: ['विश्वास', 'सिसा', 'चोट'],
+  },
+
+  // --- BREAKUP WORLD ---
+  {
+    id: 'breakup-1',
+    title: 'विदाईको अन्तिम संवाद',
+    text: `हाम्रो अन्तिम भेटमा तिम्रा आँखाहरूमा
+पहिलेको जस्तो चमक थिएन।
+त्यही दिन मैले बुझिसकेको थिएँ,
+अब तिम्रो कथामा मेरो भूमिका समाप्त भइसक्यो।`,
+    author: 'मनका शब्द',
+    world: 'breakup',
+    category: 'story',
+    subCategory: 'Last Message',
+    tags: ['विदाई', 'अन्तिम', 'सम्बन्ध'],
+    featured: true,
+  },
+  {
+    id: 'breakup-2',
+    title: 'सिसा र सम्झना',
+    text: `तिमीले त सजिलै भनिदियौ बिर्सिदेऊ भनेर,
+के मुटुलाई ढाँट्न यति सजिलो हुन्छ र?
+तर अब चिन्ता नगर,
+म तिम्रो बाटोमा कहिल्यै काँडा बन्ने छैन।`,
+    author: 'मुटुका टुक्रा',
+    world: 'breakup',
+    category: 'shayari',
+    subCategory: 'Broken Heart',
+    tags: ['टुक्रा', 'बाचा', 'विदाई'],
+  },
+  {
+    id: 'breakup-3',
+    title: 'आत्मसम्मानको जित',
+    text: `तिम्रो प्रेम पाउनका लागि
+मैले आफ्नै स्वाभिमान गुमाउनु पर्छ भने,
+मलाई त्यस्तो प्रेमको कुनै आवश्यकता छैन।
+एक्लोपन हजार गुणा प्यारो हुन्छ
+अपमानित साथभन्दा।`,
+    author: 'मनका शब्द',
+    world: 'breakup',
+    category: 'quote',
+    subCategory: 'Self-Respect',
+    tags: ['स्वाभिमान', 'आत्मसम्मान', 'मुक्ति'],
+  },
+  {
+    id: 'breakup-4',
+    title: 'हिलिङ र नयाँ बिहानी',
+    text: `मन दुख्यो भन्दैमा जीवन सकिँदैन,
+पात झर्दैमा रूख मरिहाल्दैन।
+हरेक अन्त्यले एउटा नयाँ सुरुवातको ढोका खोल्छ,
+अब म आफूलाई माया गर्न सिक्दै छु।`,
+    author: 'पुनर्जन्म',
+    world: 'breakup',
+    category: 'poem',
+    subCategory: 'Healing & Moving On',
+    tags: ['हिलिङ', 'सुरुवात', 'आशा', 'प्रेम'],
+    featured: true,
+  },
+  {
+    id: 'breakup-5',
+    title: 'छोड्ने साहस (Let It Go)',
+    text: `कसैलाई जबरजस्ती बाँधेर राख्न सकिन्न।
+जसलाई जानु छ, उसलाई मुस्कुराएर जान देऊ।
+कहिलेकाहीँ हातको मुठ्ठी खोल्नु नै
+आफ्नो शान्तिको पहिलो पाइला हुन्छ।`,
+    author: 'मनका शब्द',
+    world: 'breakup',
+    category: 'quote',
+    subCategory: 'Moving On',
+    tags: ['मुक्ति', 'शान्ति', 'सम्झना'],
+  },
+
+  // --- LIFE WORLD ---
+  {
+    id: 'life-1',
+    title: 'समयको सत्य',
+    text: `समय र परिस्थिति सधैँ एकनाश रहँदैनन्,
+रुखबाट ओइलिएका पातहरूले पनि नयाँ पालुवाको सङ्केत दिन्छन्।
+आत्तिनु पर्दैन जीवनको अँध्यारोसँग,
+हरेक कालो रातको पछाडि उज्यालो बिहानी पर्खिरहेको हुन्छ।`,
+    author: 'लक्ष्मीप्रसाद देवकोटा भाव',
+    world: 'life',
+    category: 'poem',
+    subCategory: 'Reality of Life',
+    tags: ['समय', 'पालुवा', 'बिहानी', 'धैर्य'],
+    featured: true,
+  },
+  {
+    id: 'life-2',
+    title: 'मान्छेको स्वभाव',
+    text: `तिमी सफल हुँदा ताली बजाउने हजारौँ भेटिन्छन्,
+तर असफल हुँदा काँध दिने एउटै पनि मुस्किलले पाइन्छ।
+त्यसैले कसैको प्रशंसामा मात्तिनु हुँदैन,
+र कसैको आलोचनामा आत्तिनु हुँदैन।`,
+    author: 'मनका शब्द',
+    world: 'life',
+    category: 'quote',
+    subCategory: 'Human Nature',
+    tags: ['स्वभाव', 'ताली', 'प्रशंसा'],
+  },
+  {
+    id: 'life-3',
+    title: 'कर्मको नियम',
+    text: `संसार एउटा ऐना हो,
+तिमी जे दिन्छौ त्यही फर्केर आउँछ।
+मीठो फल पाउनका लागि
+काँडाको बीउ रोपेर कहिल्यै आश नगर।`,
+    author: 'पूर्वीय दर्शन',
+    world: 'life',
+    category: 'quote',
+    subCategory: 'Karma',
+    tags: ['कर्म', 'ऐना', 'सत्य', 'फल'],
+  },
+  {
+    id: 'life-4',
+    title: 'जिन्दगीका घुम्तीहरू',
+    text: `बाटो सिधा भए यात्राको मज्जा आउँदैन,
+उकाली र ओराली नै जीवनका वास्तविक रङ्ग हुन्।
+ठेस लाग्नु कमजोरी होइन,
+ठेस लागेर पनि पुनः उठ्न नसक्नु चाहिँ कमजोरी हो।`,
+    author: 'भूपी शेरचन प्रेरणा',
+    world: 'life',
+    category: 'quote',
+    subCategory: 'Life Lessons',
+    tags: ['उकाली', 'ओराली', 'यात्रा'],
+  },
+  {
+    id: 'life-5',
+    title: 'मृत्यु र अस्तित्व',
+    text: `हामी यहाँ केही वर्षका पाहुना मात्र हौँ,
+न साथमा केही ल्याएका थियौँ न केही लिएर जान्छौँ।
+छोडेर जाने त केवल कर्म र मानिसको मनमा आफ्ना सम्झना मात्र हो।`,
+    author: 'मनका शब्द',
+    world: 'life',
+    category: 'quote',
+    subCategory: 'Philosophy',
+    tags: ['पाहुना', 'कर्म', 'अस्तित्व'],
+  },
+
+  // --- MOTIVATION WORLD ---
+  {
+    id: 'motivation-1',
+    title: 'उडानको अठोट',
+    text: `आँधीले चराको गुँड भत्काउन सक्ला,
+तर उड्ने पखेटाको तागत खोस्न सक्दैन।
+तिमी आफ्नो सपनाको पछि यसरी दगुर,
+कि भोलि तिमीलाई हेर्नेहरूले गर्व गर्न सकुन्।`,
+    author: 'मनका शब्द',
+    world: 'motivation',
+    category: 'poem',
+    subCategory: 'Dreams & Courage',
+    tags: ['पखेटा', 'आँधी', 'सपना', 'साहस'],
+    featured: true,
+  },
+  {
+    id: 'motivation-2',
+    title: 'मेहेनतको फल',
+    text: `सपना पूरा गर्नका लागि सुत्ने होइन,
+रातभर जागा रहेर पसिना बगाउनु पर्छ।
+संसारले तिम्रो सङ्घर्ष देख्दैन,
+केवल नतिजा हेरेर फैसला गर्छ।
+त्यसैले मौन रहेर मेहेनत गर, तिम्रो सफलताले आफैँ आवाज निकाल्नेछ।`,
+    author: 'युवा आवाज',
+    world: 'motivation',
+    category: 'quote',
+    subCategory: 'Hard Work & Success',
+    tags: ['पसिना', 'मेहेनत', 'सफलता'],
+  },
+  {
+    id: 'motivation-3',
+    title: 'कहिल्यै हार नमान्नु',
+    text: `अँध्यारो जति नै गहिरो भए पनि
+एउटा सानो दियोले त्यसलाई जित्न सक्छ।
+तिमी त्यो दियो हौ, जो आँधीसँग पनि जुध्न सक्छ।
+उठ, अघि बढ, बाटो तिम्रै प्रतीक्षामा छ!`,
+    author: 'मनका शब्द',
+    world: 'motivation',
+    category: 'quote',
+    subCategory: 'Never Give Up',
+    tags: ['दियो', 'आशा', 'अठोट', 'जीत'],
+  },
+  {
+    id: 'motivation-4',
+    title: 'अनुशासन र संकल्प',
+    text: `अवस्था जस्तोसुकै आओस्,
+आफ्नो लक्ष्यबाट नजर नहटाऊ।
+आलस्य आजको आनन्द हो तर भोलिको विनाश,
+अनुशासन आजको पीडा हो तर भोलिको गौरव!`,
+    author: 'गुरुवाणी',
+    world: 'motivation',
+    category: 'quote',
+    subCategory: 'Discipline',
+    tags: ['अनुशासन', 'लक्ष्य', 'संकल्प'],
+  },
+
+  // --- LONELINESS WORLD ---
+  {
+    id: 'lonely-1',
+    title: 'आफैंसँगको एकान्त',
+    text: `रात छिप्पिँदै जाँदा संसार निदाउँछ,
+र मेरो एकान्त मसँगै जागै बस्छ।
+यहाँ कुनै कृत्रिम हाँसोको जरुरी छैन,
+यो शान्त कोठामा म केवल म भएर बाँच्छु।`,
+    author: 'मनका शब्द',
+    world: 'loneliness',
+    category: 'poem',
+    subCategory: 'Solitude',
+    tags: ['एकान्त', 'शान्ति', 'रात'],
+    featured: true,
+  },
+  {
+    id: 'lonely-2',
+    title: 'जून र म',
+    text: `आकाशमा चम्किने त्यो एक्लो जूनलाई हेर्छु,
+लाग्छ ऊ पनि म जस्तै धेरैलाई उज्यालो बाँडेर
+आफू भने सधैँ एक्लै रात बिताइरहेको छ।`,
+    author: 'अन्वेषी',
+    world: 'loneliness',
+    category: 'shayari',
+    subCategory: 'Silent Stars',
+    tags: ['जून', 'तारा', 'एक्लो'],
+  },
+
+  // --- FRIENDSHIP WORLD ---
+  {
+    id: 'friend-1',
+    title: 'यारीको मोल',
+    text: `हातमा हात मिलाएर हिँड्ने हजार भेटिएलान्,
+तर खाडलमा खस्दा हात तानेर निकाल्ने एउटै साथी काफी हुन्छ।
+साथी त्यो हो जसले तिम्रो आँखाको उदासी
+तिमीले नभन्दै चिन्न सक्छ।`,
+    author: 'मित्रताका पाना',
+    world: 'friendship',
+    category: 'shayari',
+    subCategory: 'True Friendship',
+    tags: ['यार', 'साथी', 'साथ', 'न्यानो'],
+    featured: true,
+  },
+  {
+    id: 'friend-2',
+    title: 'सधैँको साथी',
+    text: `जिन्दगीको यो लामो यात्रामा
+पैसा, पद र प्रतिष्ठा क्षणिक हुन्।
+साँचो सम्पत्ति त ती साथी हुन् जसलाई सम्झिँदा
+मुटुभित्र न्यानो हाँसो फैलन्छ।`,
+    author: 'मनका शब्द',
+    world: 'friendship',
+    category: 'quote',
+    subCategory: 'Friendship Bonds',
+    tags: ['सम्पत्ति', 'हाँसो', 'साथी'],
+  },
+
+  // --- DREAMS WORLD ---
+  {
+    id: 'dream-1',
+    title: 'ताराहरूसँगको वार्तालाप',
+    text: `जब म आँखा चिम्लन्छु,
+एउटा यस्तो संसार खुल्छ जहाँ कुनै बन्धन छैन।
+म आकाशको निलो गहिराइमा पौडन्छु,
+र आफ्ना अधुरा कल्पनाहरूलाई प्वाँख हालिदिन्छु।`,
+    author: 'कल्पनाशील',
+    world: 'dreams',
+    category: 'poem',
+    subCategory: 'Cosmic Dreams',
+    tags: ['सपना', 'कल्पना', 'अन्तरिक्ष'],
+    featured: true,
+  },
+  {
+    id: 'dream-2',
+    title: 'असीमित क्षितिज',
+    text: `सपना देख्न कहिल्यै नडराऊ।
+किनकि संसारका सबै महान् आविष्कारहरू
+सुरुमा कसैको सानो सपना मात्र थिए।`,
+    author: 'मनका शब्द',
+    world: 'dreams',
+    category: 'quote',
+    subCategory: 'Limitless Dreams',
+    tags: ['सपना', 'क्षितिज', 'आविष्कार'],
+  },
+];

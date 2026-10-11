@@ -1,0 +1,8 @@
+{
+  "name": "शब्द संसार Sabda Sansar",
+  "description": "An immersive emotional universe for Nepali literature, poetry, shayari, ghazals, and quotes with interactive atmospheres, generative soundscapes, and quote card studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
